@@ -109,15 +109,15 @@
   }
   
   div#ajudaReservar{
-    position:absolute;
-    left:10%;
+    margin-left:10%;
     margin-top:5%;
-    width:29%;
+    width:100%;
   }
   
   div#contactInfo{
-    margin-top:8%;
+    margin-top:10px;
     margin-left:5%;
+    margin-bottom: 10px;
   }
   
   a#logout{
@@ -126,7 +126,7 @@
   
   button#messageSendButton{
     margin-left:70%;
-    margin-bottom:2px;
+    margin-bottom:5px;
   }
   
   form#signupform{
@@ -141,15 +141,15 @@
   }
   
   form#messageForm{
-    margin-left:40%;
+    margin-left:5px;
     margin-top:6%;
   }
   
   div#espacoReserva{
     background-color:white;
     border:2px solid black;
-    margin-left:40%;
-    margin-top:8%;
+    margin-left:10%;
+    margin-top:1%;
     margin-bottom:1%;
     width:37%;
     height:40%;
@@ -309,6 +309,7 @@
     padding:10px 15px 8px;
     width:25%;
     margin-left:10%;
+    margin-bottom:5px;
   }
 
   button#add_sala_button{
@@ -321,3 +322,4 @@
     margin-left:10%;
     width:141px;
   }
+

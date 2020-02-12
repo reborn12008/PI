@@ -3,24 +3,26 @@
 {% block content %}
 
 <h5>Envie uma mensagem descrevendo o erro</h5>
+<section id="add_sala_section">
 <form method="post" id='messageForm'>
     {% csrf_token %}
     {{ form.as_p }}
     <br>
       <button type="submit"  id='messageSendButton'>Send</button>
 </form>
-
+</section>
 {% endblock %}
 
 {% block info %}
 
 <h5>Envie uma mensagem descrevendo o erro</h5>
+    <section id="add_sala_section">
 <form method="post" id='messageForm'>
     {% csrf_token %}
     {{ form.as_p }}
     <br>
     <button type="submit"  id='messageSendButton'>Send</button>
 </form>
-
+</section>
 {% endblock %}
 
