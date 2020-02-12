@@ -2,15 +2,16 @@
 
 {% block info %}
 
-    <h5> Formulario de Edição</h5>
-    <section id="edit_space">
-        <form id="edit_form" method="POST">
-            <a>Nome da Sala: {{ nome_sala }}</a><br><br>
-            {{ formulary.as_p }}
-            {% csrf_token %}
-            <button type="submit" id="concluir_edit" name="edit"> Concluir</button>
-            <button id="remove_sala" type="submit" name="remove" onclick="return confirm('Tem a certeza que deseja remover esta sala?')"> Remover Sala</button>
-        </form>
+<h5> Formulario de Edição</h5>
+<section id="edit_space">
+    <form id="edit_form" method="POST">
+        <a>Nome da Sala: {{nome_sala}}</a>
+        {{formulary}}
+        {% csrf_token %}
+        <button type=submit> Concluir</button>
+    </form>
+</section>
 
-    </section>
+
+
 {% endblock %}

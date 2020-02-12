@@ -3,23 +3,23 @@
 {% block info %}
 <h2>Fazer Reserva</h2>
 <div id='ajudaReservar'>
-<p  id="reservar_text">Preencha o formulário com os dados adequados à reserva que pretende</p>
+  <p>Preencha o formulário com os dados adequados à reserva que pretende</p>
 </div>
 <div id='espacoReserva'>
-<form id ='reservarForm' method="POST">
-{% csrf_token %}
-Data de reserva: {{ form.data }} <br><br>
-Hora de inicio: {{ form.hora_inicial }} :
-{{ form.minutos_inicial }}<br><br>
-Hora de término: {{ form.hora_final }} :
-{{ form.minutos_final }}<br><br>
-Lotação necessária: {{ form.lotacao }}<br><br>
-Pretende um Laboratório? {{ form.laboratorio }}<br><br>
-Pretende um Auditório? {{ form.auditorio }}<br><br>
-<button type="submit" id='messageSendButton'>Send</button>
-</form>
-    {% for message in messages %}
-      <li id="errorMessage">{{ message }}</li><br>
-    {% endfor %}
+  <form id='reservarForm' method="POST">
+    {% csrf_token %}
+    Data de reserva: {{ form.data }} <br><br>
+    Hora de inicio: {{ form.hora_inicial }} :
+    {{ form.minutos_inicial }}<br><br>
+    Hora de término: {{ form.hora_final }} :
+    {{ form.minutos_final }}<br><br>
+    Lotação necessária: {{ form.lotacao }}<br><br>
+    Pretende um Laboratório? {{ form.laboratorio }}<br><br>
+    Pretende um Auditório? {{ form.auditorio }}<br><br>
+    <button type="submit" id='messageSendButton'>Send</button>
+  </form>
+  {% for message in messages %}
+  <li id="errorMessage">{{ message }}</li><br>
+  {% endfor %}
 </div>
 {% endblock %}

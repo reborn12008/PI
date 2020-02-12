@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block info %}
-    <h5> Adicionar Sala </h5>
-    <section id="add_sala_section">
-        <form id='adicionar_sala_form' method="POST" action="{% url 'espaco_adicionado' %}">
-            {{ form.as_p }}
-            {% csrf_token %}
-            <button type=submit id="add_sala_button"> Adicionar Sala</button>
-        </form>
-    </section>
+<h5> Adicionar Sala </h5>
+<section>
+    <form id='adicionar_sala_form' method="POST" action=".">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type=submit> Adicionar Sala </button>
+    </form>
+</section>
 
 {% endblock %}

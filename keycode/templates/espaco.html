@@ -10,22 +10,22 @@
         <th>Lotação</th>
         <th>Tipo</th>
         <th>Estado</th>
-        <th>      </th>
+        <th> </th>
     </tr>
     {% for entry in salas %}
-        <tr>
+    <tr>
         {%for regist in entry%}
-            <td id="espaco_cell">{{ regist }}</td>
+        <td id="espaco_cell">{{ regist }}</td>
         {% endfor %}
         <td id="espaco_cell">
-            <a id="espaco_edit" name ="espaco_edit" class="btn btn-primary" href="/editar/{{entry.0}}">Editar</a></td>
-        </tr>
+            <a id="espaco_edit" name="espaco_edit" class="btn btn-primary" href="/editar/{{entry.0}}">Editar</a></td>
+    </tr>
     {% endfor %}
-        
+
 </table>
 <form action="{% url "adicionar_espaco" %}">
-{% csrf_token %}
-{{ form }}
-<button id="adicionar_espaco" type=submit> Adicionar Sala </button>
+    {% csrf_token %}
+    {{ form }}
+    <button id="adicionar_espaco" type=submit> Adicionar Sala </button>
 </form>
 {% endblock %}

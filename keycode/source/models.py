@@ -16,12 +16,12 @@ SEXTA = 5
 SABADO = 6
 DIAS_SEMANA = ((SEGUNDA,'Segunda-feira'),(TERCA,'Terça-feira'),(QUARTA,'Quarta-Feira'),(QUINTA,'Quinta-feira'),(SEXTA,'Sexta-feira'),(SABADO,'Sábado'))
 
-
 class Curso(models.Model):
     nome_curso = models.CharField(max_length=100)
 
     def __str__(self):
         return self.nome_curso
+
 
 
 class Uc(models.Model):
@@ -32,11 +32,13 @@ class Uc(models.Model):
         return self.curso,self.nome_uc
 
 
+
 class Tipo_utilizador(models.Model):
     nome_tipo_utilizador = models.CharField(max_length=50)
 
     def __str__(self):
         return self.nome_tipo_utilizador
+
 
 
 class Utilizador(models.Model):
@@ -48,16 +50,16 @@ class Utilizador(models.Model):
         return self.tipo_utilizador,self.primeiro_nome_utilizador,self.ultimo_nome_utilizador
 
 
+
 class Sala(models.Model):
     nome = models.CharField(max_length=10)
     piso = models.IntegerField()
     lotacao = models.IntegerField()
-    laboratorio = models.BooleanField()
-    auditorio = models.BooleanField()
+    tipo = models.BooleanField() # false se auditorio, true se laboratorio
     status = models.BooleanField()
 
     def __str__(self):
-        return self.nome
+        return str((self.nome, self.piso, self.lotacao, self.tipo, self.status))
 
     class Meta:
         ordering = ['-nome', '-lotacao']
