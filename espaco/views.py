@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.http import Http404, HttpResponse
 from keycode.source.models import Curso as curso
 from keycode.source.models import Uc as uc
 from keycode.source.models import Tipo_utilizador as tipo_utilizador
@@ -7,7 +8,7 @@ from keycode.source.models import Sala as sala
 from keycode.source.models import Horario as horario
 from keycode.source.models import Acesso as acesso
 from django import forms
-from .forms import createRoomForm
+from .forms import createRoomForm, editRoomModelForm
 
 TIPOS_SALA=[(0,'Laboratório'),(1,'Auditório'),(2,'Normal')]
 
@@ -25,66 +26,40 @@ def espaco(request):
     for entry in sala.objects.all():
         if entry.laboratorio==True:
             if entry.status == True:
-                array=[entry.designacao_sala,entry.piso,entry.lotacao,'Laboratório','Disponivel']
+                array=[entry.nome,entry.piso,entry.lotacao,'Laboratório','Disponivel']
             else:
-                array=[entry.designacao_sala,entry.piso,entry.lotacao,'Laboratório','Indisponivel']
+                array=[entry.nome,entry.piso,entry.lotacao,'Laboratório','Indisponivel']
         elif entry.auditorio==True:
             if entry.status == True:
-                array=[entry.designacao_sala,entry.piso,entry.lotacao,'Auditório','Disponivel']
+                array=[entry.nome,entry.piso,entry.lotacao,'Auditório','Disponivel']
             else:
-                array=[entry.designacao_sala,entry.piso,entry.lotacao,'Auditório','Indisponivel']
+                array=[entry.nome,entry.piso,entry.lotacao,'Auditório','Indisponivel']
         else:
             if entry.status == True:
-                array=[entry.designacao_sala,entry.piso,entry.lotacao,'Normal','Disponivel']
+                array=[entry.nome,entry.piso,entry.lotacao,'Normal','Disponivel']
             else:
-                array=[entry.designacao_sala,entry.piso,entry.lotacao,'Normal','Indisponivel']
+                array=[entry.nome,entry.piso,entry.lotacao,'Normal','Indisponivel']
         salas.append(array)
     return render(request,'espaco.html',{'salas':salas})
 
+def editar_espaco(request, nome):
+    obj = get_object_or_404(sala, nome=nome)
+    r = obj.nome
+    form = editRoomModelForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        if 'edit' in request.POST:
+            form.save()
+            return render(request,'edicao_concluida.html')
+        elif 'remove' in request.POST:
+            sala.objects.filter(nome=nome).delete()
+            return render(request, 'remocao_concluida.html')
+    return render(request,'editar_espaco.html',{'formulary':form,'nome_sala':r} )
 
-
-
-class editForm(forms.Form):
-    global piso_edicao
-    global lotacao_edicao
-    global lab_edicao
-    global aud_edicao
-
-    print(piso_edicao,'---',lotacao_edicao,'---',lab_edicao,'---',aud_edicao)
-    piso = forms.IntegerField(required=True,label='Piso',widget=forms.NumberInput(attrs={'placeholder':piso_edicao}))
-    lotacao = forms.IntegerField(required=True,label='Lotação',widget=forms.NumberInput(attrs={'placeholder':lotacao_edicao}))
-    if (lab_edicao==True):
-        tipo_sala = forms.ChoiceField(required=True,label='Tipo de Sala:',choices=TIPOS_SALA,initial = TIPOS_SALA[0])
-    elif(aud_edicao==True):
-        tipo_sala = forms.ChoiceField(required=True,label='Tipo de Sala:',choices=TIPOS_SALA,initial = TIPOS_SALA[1])
-    else:
-        tipo_sala = forms.ChoiceField(required=True,label='Tipo de Sala:',choices=TIPOS_SALA,initial = TIPOS_SALA[2])
-
-    estado = forms.ChoiceField(required=True,label='Estado',choices=((0,'Indisponivel'),(1,'Disponivel')),initial = 1)
-
-
-def editar_espaco(request):
-
-    if(request.method=="GET"):
-        global piso_edicao
-        global lotacao_edicao
-        global lab_edicao
-        global aud_edicao
-        r=request.GET['espaco_edit']
-        for regist in sala.objects.all():
-            if regist.designacao_sala == r :
-                piso_edicao = regist.piso
-                lotacao_edicao = regist.lotacao
-                lab_edicao = regist.laboratorio
-                aud_edicao = regist.auditorio
-                print(piso_edicao,'---',lotacao_edicao,'---',lab_edicao,'---',aud_edicao)
-                form = editForm()
-                return render(request,'editar_espaco.html',{'formulary':form,'nome_sala':r} )
-    return render(request,'espaco.html')
 
 def adicionar_espaco(request):
     form = createRoomForm()
     return render(request,'adicionar_espaco.html',{'form':form})
+
 
 def inserir_espaco(request):
     if(request.method=="POST"):
@@ -95,38 +70,33 @@ def inserir_espaco(request):
             lotacao_da_sala = form.cleaned_data['lotacao_sala']
             tipo_da_sala = form.cleaned_data['tipo_sala']
             status_da_sala = form.cleaned_data['status_sala']
+            print('Nome da sala:', nome_da_sala, 'Piso-', piso_da_sala, 'lotacao_sala-', lotacao_da_sala, 'Tipo: ', tipo_da_sala, 'Sataus:',status_da_sala)
             if(status_da_sala == 0):
                 if(tipo_da_sala == 0):
-                    nova_sala = sala(designacao_sala = nome_da_sala,
+                    sala.objects.create(nome = nome_da_sala,
                                      piso = piso_da_sala, lotacao = lotacao_da_sala,
-                                     laboratorio=True, auditorio=False, status=False)
-                    nova_sala.save()
+                                     laboratorio=True, auditorio=False, status=False).save()
                 elif(tipo_da_sala == 1):
-                    nova_sala = sala(designacao_sala = nome_da_sala,
+                    sala.objects.create(nome = nome_da_sala,
                                      piso = piso_da_sala, lotacao = lotacao_da_sala,
-                                     laboratorio=False, auditorio=True, status=False)
-                    nova_sala.save()
+                                     laboratorio=False, auditorio=True, status=False).save()
                 else:
-                    nova_sala = sala(designacao_sala = nome_da_sala,
+                    sala.objects.create(nome = nome_da_sala,
                                      piso = piso_da_sala, lotacao = lotacao_da_sala,
-                                     laboratorio=False, auditorio=False, status=False)
-                    nova_sala.save()
+                                     laboratorio=False, auditorio=False, status=False).save()
             elif(status_da_sala == 1):
                 if(tipo_da_sala == 0):
-                    nova_sala = sala(designacao_sala = nome_da_sala,
+                    sala.objects.create(nome = nome_da_sala,
                                      piso = piso_da_sala, lotacao = lotacao_da_sala,
-                                     laboratorio=True, auditorio=False, status=True)
-                    nova_sala.save()
+                                     laboratorio=True, auditorio=False, status=True).save()
                 elif(tipo_da_sala == 1):
-                    nova_sala = sala(designacao_sala = nome_da_sala,
+                    sala.objects.create(nome = nome_da_sala,
                                      piso = piso_da_sala, lotacao = lotacao_da_sala,
-                                     laboratorio=False, auditorio=True, status=True)
-                    nova_sala.save()
+                                     laboratorio=False, auditorio=True, status=True).save()
                 else:
-                    nova_sala = sala(designacao_sala = nome_da_sala,
+                    sala.objects.create(nome = nome_da_sala,
                                      piso = piso_da_sala, lotacao = lotacao_da_sala,
-                                     laboratorio=False, auditorio=False, status=True)
-                    nova_sala.save()
-    return render(request,'base.html')
+                                     laboratorio=False, auditorio=False, status=True).save()
+    return render(request, 'base.html')
         
 

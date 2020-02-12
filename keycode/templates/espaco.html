@@ -17,10 +17,8 @@
         {%for regist in entry%}
             <td id="espaco_cell">{{ regist }}</td>
         {% endfor %}
-        <form action="{% url 'editar_espaco' %}" method="GET">
-        {% csrf_token %}
-            <td id="espaco_cell"><button id="espaco_edit" name ="espaco_edit" value="{{ entry.0 }}"> Editar </button></td>
-        </form>
+        <td id="espaco_cell">
+            <a id="espaco_edit" name ="espaco_edit" class="btn btn-primary" href="/editar/{{entry.0}}">Editar</a></td>
         </tr>
     {% endfor %}
         

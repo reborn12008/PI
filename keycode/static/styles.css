@@ -284,11 +284,40 @@
   }
 
   section#edit_space{
-    width:100%;
+    width:25%;
     border:2px solid black;
-    margin-left:5px;
+    margin-left:10%;
+    margin-bottom:1%;
+    background-color: white;
+    padding:10px 15px 8px;
   }
-  
-  form#editform{
-    margin:3px 5px 3px;
+
+  button#concluir_edit{
+    margin-top:8px;
+  }
+
+  button#adicionar_espaco{
+    margin-left:80%;
+    margin-bottom: 2%;
+    margin-top:1%;
+    font-size:20px;
+  }
+
+  section#add_sala_section{
+    border:2px solid black;
+    background:white;
+    padding:10px 15px 8px;
+    width:25%;
+    margin-left:10%;
+  }
+
+  button#add_sala_button{
+    margin-left:50%;
+    margin-bottom:5px;
+  }
+
+  button#remove_sala{
+    position: inherit;
+    margin-left:10%;
+    width:141px;
   }
