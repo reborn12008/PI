@@ -1,0 +1,294 @@
+ 
+  h1{
+    margin-left:4px;
+  }
+  
+  h2{
+    margin-left:45%;
+  }
+  
+  h3{
+    font-size:18px;
+    margin-left:4px;
+  }
+
+  h4{
+    font-size:18px;
+    margin-left:5%;
+  }
+  
+  h5{
+    font-size:18px;
+    margin-left:10%;
+  }
+  
+  h6{
+    font-size:18px;
+    margin-left:35%;
+    position:absolute;
+  }
+  
+  html{
+    width:100%;
+    height:100%;
+  }
+  body{
+    width:100%;
+    height:100%;
+  }
+  section{
+    margin-left:5%;
+    border:2px solid black;
+    background-color:#BCB8B8;
+    height:max-content;
+    width:90%;
+  }
+  
+  footer{
+    margin-top:5px;
+    border:1px solid grey;
+    margin-left:5%;
+    background-color:#BCB8B7;
+    width:90%;
+    height:10%;
+  }
+  
+  header{
+    width:90%;
+    height:10%;
+    display:inline;
+    margin-bottom:8px;
+    margin-left:5%;
+  }
+  
+  button#signupbutton{
+    position:absolute;
+    left:20%;
+    width:120px;
+    height:50px;
+    font-size:20px;
+  }
+  
+  #login_button{
+    margin-left:2%;
+  }
+  
+  #login_form{
+    margin-left:2%;
+    margin-bottom:2%;
+    width:80%;
+    height:130px;
+    background-color:white;
+    border: 2px solid black;
+  }
+  
+  #intro_text{
+    margin-left:1%;
+  }
+  
+  #footer_ref{
+    margin-left:3%;
+    margin-top:30px;
+    font-size:20px;
+  }
+  
+  #header_ref{
+    margin-left:3%;
+    font-size:20px;
+  }
+  
+  div#username_box{
+    border:2px solid black;
+    width:180px;
+    height:50px;
+    background-color:white;
+    padding:2px;
+    position:absolute;
+    right:4.3%;
+    
+  }
+  
+  div#ajudaReservar{
+    position:absolute;
+    left:10%;
+    margin-top:5%;
+    width:29%;
+  }
+  
+  div#contactInfo{
+    margin-top:8%;
+    margin-left:5%;
+  }
+  
+  a#logout{
+    margin-left:60%;
+  }
+  
+  button#messageSendButton{
+    margin-left:70%;
+    margin-bottom:2px;
+  }
+  
+  form#signupform{
+    margin-left:5px;
+    margin-top:2px;
+  }
+  
+  form#reservarForm{
+    margin-top:5%;
+    margin-left:5%;
+    
+  }
+  
+  form#messageForm{
+    margin-left:40%;
+    margin-top:6%;
+  }
+  
+  div#espacoReserva{
+    background-color:white;
+    border:2px solid black;
+    margin-left:40%;
+    margin-top:8%;
+    margin-bottom:1%;
+    width:37%;
+    height:40%;
+  }
+  
+  div#introInfo{
+    width:70%;
+  }
+
+  div#tabela_horario{
+    width:80%;
+    height:55%;
+    border:2px solid black;
+    margin-left:10%;
+    margin-top:5%;
+    margin-bottom:1%;  
+  }
+  
+  li#errorMessage{
+    position:absolute;
+    font-size:14px;
+    margin-left:4%;
+    margin-top:2%;
+    color:#b04135;
+  }
+
+  td {
+    border:1px solid black;
+    background-color:white;
+  }
+
+  th {
+    border:1px solid black;
+    background-color:white;
+  }
+
+  table#horario{
+    width:100%;
+    height:100%;
+  }
+
+  div#editar_espaco{
+    display:flex;
+    width:420px;
+    margin-left:10%;
+    margin-top:7%;
+    margin-bottom:5%;
+  }
+
+  div#rembtn{
+    border:1px solid black;
+    height:50px;
+    width:50%;
+    padding:3px 6px;
+    margin-left:10px;
+    border-radius: 10px;
+  }
+
+  div#addbtn{
+    border:1px solid black;
+    height:50px;
+    width:50%;
+    padding:3px 6px;
+    border-radius: 10px;
+  }
+
+  a#espacobtn{
+    font-size:17px;
+    text-decoration:none;
+  }
+
+  .column {
+    float: left;
+    width: 10%;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .row {
+    display: flex;
+    margin-left:5%;
+    margin-top:1%;
+    width:70%;
+  }
+
+  .column {
+    flex: 50%;
+  }
+
+  a#celula{
+    font-size:20px;
+    margin-left:10%;
+  }
+
+  a#celltitle{
+    font-size:22px;
+    margin-left:10%;
+    text-decoration:bold;
+  }
+
+  div#cellcontainer{
+    width:100%;
+    height:inherit;
+    background-color:white;
+    border:1px solid black;
+  }
+
+  table#editar_espaco{
+    width:70%;
+    height:inherit;
+    margin-left:10%;
+    margin-top:1%;
+    margin-bottom:1%;
+  }
+
+  td#espaco_cell{
+    text-align:center;
+    border:1px solid black;
+    background-color:white;
+  }
+
+  button#espaco_edit{
+    width:100%;
+    height:100%;
+    background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+    background-color:#72b352;
+    border:1px #72b352;
+  }
+
+  section#edit_space{
+    width:100%;
+    border:2px solid black;
+    margin-left:5px;
+  }
+  
+  form#editform{
+    margin:3px 5px 3px;
+  }

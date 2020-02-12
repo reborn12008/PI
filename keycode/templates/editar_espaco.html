@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block info %}
+
+<h5> Formulario de Edição</h5>
+<section id="edit_space">
+<form id="edit_form" method="POST">
+<a>Nome da Sala: {{nome_sala}}</a>
+{{formulary}}
+{% csrf_token %}
+<button type=submit> Concluir</button>
+</form>
+</section>
+
+
+
+{% endblock %}

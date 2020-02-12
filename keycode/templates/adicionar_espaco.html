@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block info %}
+<h5> Adicionar Sala </h5>
+<section>
+<form id='adicionar_sala_form' method="POST" action="{% url 'espaco_adicionado' %}">
+{{ form }}
+{% csrf_token %}
+<button type=submit> Adicionar Sala </button>
+</form>
+</section>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Plataforma de Gestão de Acesso as Espaços{% endblock %}</title>
+    <link href="{{STATIC_DIR}}/static/styles.css" rel="stylesheet" type="text/css"/>
+  </head>
+  
+  <body>
+    <header>
+      <h1 align='center'>Plataforma de Gestão de Acesso a Espaços</h1>
+      
+      {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+        <a id="header_ref" href="{% url 'home' %}">Homepage</a>
+        <a id="header_ref" href="{% url 'reservar' %}">Reservar</a>
+        <a id="header_ref" href="{% url 'espaco' %}">Espaço</a>
+        
+        {% else %}
+        <a id="header_ref" href="{% url 'home' %}">Homepage</a>
+        <a id="header_ref" href="{% url 'horario' %}">Horário</a>
+        <a id="header_ref" href="{% url 'reservar' %}">Reservar</a>
+        {% endif %}
+      {% else %}
+        <a id="header_ref" href="{% url 'home' %}">Homepage</a>
+      {% endif %}
+      <hr>
+    </header>
+    
+    <body>
+    <section>
+    {% if user.is_authenticated %}
+    <div id='username_box'>
+     <a id='username'>Bem-vindo, {{ user }} </a>
+     <a id='logout' href="{% url 'logout' %}">LogOut</a>
+     </div>
+    {% block info %}
+    <div id='introInfo'>
+    <p id="intro_text"> Se deseja consultar o código de um espaço já definidio, acede á secção "Horários" e selecione o bloco pretendido</p>
+    
+    <br>
+    <p id="intro_text"> Se deseja reservar uma sala para um evento futuro, aceda à secção "Reservar"</p>
+    </div>
+    {% endblock %}
+    
+    {% else %}
+    {% block content %}
+    <p id="intro_text">
+        Bem-vindo ao website de gestão de acesso aos espaços da Escola Superior de Tecnologia e Gestão, uma das escolas pertencentes ao Instituto Politécnico de Beja.
+    </p>
+    <p id="intro_text">
+        Deverá começar por efetuar o login para ter acessos às suas credencias de acesso ao espaço desejado.
+    </p>
+    <br><br>
+    <div id="login_form">
+     <h1>Log in</h1>
+     <form method="post" action="{% url 'home' %}">
+     {% csrf_token %}
+     {{ form }}
+     <button type="submit" id="login_button" name="login_button">Log in</button><br>
+     <a href="" style="font-size:14px; margin-left:5px">Não consegue entrar?</a> 
+     <a href="{% url 'signup' %}">Ainda não tem conta?</a>
+  </form>
+  </div>
+  {% endblock %}
+  {% endif %}
+    </section>
+    </body>
+  </body>
+  <footer>
+  <a id="footer_ref" href="{% url 'reportarerro' %}">Reportar Erro</a>
+  <a id="footer_ref" href="{% url 'contactos' %}">Contactos</a>
+  </footer>
+</html>
