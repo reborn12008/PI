@@ -14,8 +14,10 @@ def home(request):
             username=form.cleaned_data.get('username')
             password=form.cleaned_data.get('password')
             tryLogin=authenticate(request,username=username,password=password)
-            login(request,tryLogin)
-            return render(request,'base.html',{'user': username})
+            login(request, tryLogin)
+            
+            if request.user.is_authenticated:
+                redirect('/')
     else:
         form=loginForm()
 
