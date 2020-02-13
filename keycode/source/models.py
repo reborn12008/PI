@@ -16,6 +16,12 @@ SEXTA = 5
 SABADO = 6
 DIAS_SEMANA = ((SEGUNDA,'Segunda-feira'),(TERCA,'Terça-feira'),(QUARTA,'Quarta-Feira'),(QUINTA,'Quinta-feira'),(SEXTA,'Sexta-feira'),(SABADO,'Sábado'))
 
+TIPO_SALA = [
+    ("Auditorio", "Auditorio"),
+    ("Laboratorio", "Laboratorio"),
+    ("Normal", "Normal")
+]
+
 class Curso(models.Model):
     nome_curso = models.CharField(max_length=100)
 
@@ -52,10 +58,10 @@ class Utilizador(models.Model):
 
 
 class Sala(models.Model):
-    nome = models.CharField(max_length=10)
+    nome = models.CharField(max_length=10, unique=True)
     piso = models.IntegerField()
     lotacao = models.IntegerField()
-    tipo = models.BooleanField() # false se auditorio, true se laboratorio
+    tipo = models.CharField(max_length=25, choices=TIPO_SALA)
     status = models.BooleanField()
 
     def __str__(self):

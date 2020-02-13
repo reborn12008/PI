@@ -15,22 +15,13 @@ TIPOS_SALA=[(0,'Laboratório'),(1,'Auditório'),(2,'Normal')]
 def espaco(request):
     salas=[]
 
+
     for entry in sala.objects.all():
-        if entry.tipo==True:
-            if entry.status == True:
-                array=[entry.nome,entry.piso,entry.lotacao,'Laboratório','Disponivel']
-            else:
-                array=[entry.nome,entry.piso,entry.lotacao,'Laboratório','Indisponivel']
-        elif entry.tipo==False:
-            if entry.status == True:
-                array=[entry.nome,entry.piso,entry.lotacao,'Auditório','Disponivel']
-            else:
-                array=[entry.nome,entry.piso,entry.lotacao,'Auditório','Indisponivel']
+        print(entry)
+        if entry.status == True:
+            array=[entry.nome,entry.piso,entry.lotacao,entry.tipo,'Disponivel']
         else:
-            if entry.status == True:
-                array=[entry.nome,entry.piso,entry.lotacao,'Normal','Disponivel']
-            else:
-                array=[entry.nome,entry.piso,entry.lotacao,'Normal','Indisponivel']
+            array=[entry.nome,entry.piso,entry.lotacao,entry.tipo,'Indisponivel']
         salas.append(array)
     return render(request,'espaco.html',{'salas':salas})
 
