@@ -1,11 +1,3 @@
- 
-  h1{
-    margin-left:4px;
-  }
-  
-  h2{
-    margin-left:45%;
-  }
   
   h3{
     font-size:18px;
@@ -20,12 +12,6 @@
   h5{
     font-size:18px;
     margin-left:10%;
-  }
-  
-  h6{
-    font-size:18px;
-    margin-left:35%;
-    position:absolute;
   }
   
   html{
@@ -160,7 +146,7 @@
   }
 
   div#tabela_horario{
-    width:80%;
+    width:100%;
     height:55%;
     border:2px solid black;
     margin-left:10%;
