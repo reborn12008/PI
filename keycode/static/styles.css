@@ -323,3 +323,42 @@
     width:141px;
   }
 
+.wrap {
+    min-height: 93%;
+    height: auto !important;
+    height: 93%;
+  }
+
+.footer {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  bottom: 0;
+  width: 100%;
+  font-weight: bolder;
+  font-size: 0.75rem;
+  background-color: #515151;
+  color: #8c8c8c;
+}
+
+.footer h5 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.footer h5 {
+  margin-bottom: 2px;
+  color: white;
+}
+
+.footer a {
+  color: #cccccc;
+  font-weight: bold;
+}
+
+.st-border-footer {
+  background-color: white;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
