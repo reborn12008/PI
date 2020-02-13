@@ -49,12 +49,15 @@ class Tipo_utilizador(models.Model):
 
 class Utilizador(models.Model):
     tipo_utilizador=models.ForeignKey(Tipo_utilizador, on_delete=models.CASCADE)
+    username = models.CharField(max_length=20, unique=True, blank=False)
     primeiro_nome_utilizador = models.CharField(max_length=50)
     ultimo_nome_utilizador = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.tipo_utilizador,self.primeiro_nome_utilizador,self.ultimo_nome_utilizador
+        return str(self.username, self.tipo_utilizador,self.primeiro_nome_utilizador,self.ultimo_nome_utilizador)
 
+    class Meta:
+        ordering = ['username']
 
 
 class Sala(models.Model):

@@ -15,6 +15,7 @@ TIPOS_SALA=[(0,'Laboratório'),(1,'Auditório'),(2,'Normal')]
 def espaco(request):
     template = 'espaco.html'
     context = {'salas': sala.objects.all()}
+
     return render(request, template, context)
 
 def editar_espaco(request, nome):
@@ -28,7 +29,6 @@ def editar_espaco(request, nome):
         elif 'remove' in request.POST:
             sala.objects.filter(nome=nome).delete()
             return redirect('espaco')
-        
 
     return render(request, 'editar_espaco.html', {'formulary':form, 'nome_sala':r} )
 
@@ -42,4 +42,5 @@ def adicionar_espaco(request):
             obj.save()
             form = createRoomModelForm()
             return redirect('espaco')
+            
     return render(request, 'adicionar_espaco.html', { 'form': form })
