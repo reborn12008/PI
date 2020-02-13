@@ -74,7 +74,7 @@
       </div>
     </nav>
 
-    <section>
+    <div class="container">
       {% if user.is_authenticated %}
       {% block info %}
       <div id='introInfo'>
@@ -108,7 +108,7 @@
       </div>
       {% endblock %}
       {% endif %}
-    </section>
+    </div>
   </div>
 
   <div class="footer">

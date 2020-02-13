@@ -176,21 +176,6 @@
     color:#b04135;
   }
 
-  td {
-    border:1px solid black;
-    background-color:white;
-  }
-
-  th {
-    border:1px solid black;
-    background-color:white;
-  }
-
-  table#horario{
-    width:100%;
-    height:100%;
-  }
-
   div#editar_espaco{
     display:flex;
     width:420px;
@@ -226,19 +211,6 @@
     width: 10%;
   }
 
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  .row {
-    display: flex;
-    margin-left:5%;
-    margin-top:1%;
-    width:70%;
-  }
-
   .column {
     flex: 50%;
   }
@@ -261,19 +233,6 @@
     border:1px solid black;
   }
 
-  table#editar_espaco{
-    width:70%;
-    height:inherit;
-    margin-left:10%;
-    margin-top:1%;
-    margin-bottom:1%;
-  }
-
-  td#espaco_cell{
-    text-align:center;
-    border:1px solid black;
-    background-color:white;
-  }
 
   button#espaco_edit{
     width:100%;

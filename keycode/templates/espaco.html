@@ -3,26 +3,29 @@
 {% block info %}
 
 <h5>Página Espaço</h5>
-<table id="editar_espaco">
-    <tr>
-        <th>Sala</th>
-        <th>Piso</th>
-        <th>Lotação</th>
-        <th>Tipo</th>
-        <th>Estado</th>
-        <th> </th>
-    </tr>
+<table class="table table-light table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Sala</th>
+            <th>Piso</th>
+            <th>Lotação</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
     {% for sala in salas %}
     <tr>
-        <td id="espaco_cell">{{ sala.nome }}</td>
+        <th scope="row">{{ sala.nome }}</th>
         <td id="espaco_cell">{{ sala.piso }}</td>
         <td id="espaco_cell">{{ sala.lotacao }}</td>
         <td id="espaco_cell">{{ sala.tipo }}</td>
         <td id="espaco_cell">
             {% if sala.status == 1 %}
-                Disponivel
+            Disponivel
             {% else %}
-                Não disponivel
+            Não disponivel
             {% endif %}
         </td>
 
@@ -31,11 +34,11 @@
         </td>
     </tr>
     {% endfor %}
-
+    </tbody>
 </table>
 <form action="{% url "adicionar_espaco" %}">
     {% csrf_token %}
     {{ form }}
-    <button id="adicionar_espaco" type=submit> Adicionar Sala </button>
+    <button class="btn btn-success" type=submit> Adicionar Sala </button>
 </form>
 {% endblock %}
