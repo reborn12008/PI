@@ -33,7 +33,7 @@ def editar_espaco(request, nome):
         form.save()
         return redirect('espaco')
 
-    return render(request,'editar_espaco.html',{'formulary':form,'nome_sala':r} )
+    return render(request, 'editar_espaco.html', {'formulary':form,'nome_sala':r} )
 
 def adicionar_espaco(request):
     form = createRoomModelForm(request.POST or None)
