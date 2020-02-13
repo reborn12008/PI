@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
 from keycode.source.models import Curso as curso
 from keycode.source.models import Uc as uc
@@ -31,6 +31,7 @@ def editar_espaco(request, nome):
     form = createRoomModelForm(request.POST or None, instance=obj)
     if form.is_valid():
         form.save()
+        return redirect('espaco')
 
     return render(request,'editar_espaco.html',{'formulary':form,'nome_sala':r} )
 
@@ -38,92 +39,10 @@ def adicionar_espaco(request):
     form = createRoomModelForm(request.POST or None)
 
     if(request.method=="POST"):
-        obj = form.save(commit=False)
-
-        print("********************")
-        print(obj)
-        print("********************")
-
-        # if(obj.status == 0):
-        #     if(obj.tipo == 0):
-        #         nova_sala = sala(nome = nome,
-        #                             piso = piso, lotacao = lotacao,
-        #                             laboratorio=True, auditorio=False, status=False)
-        #         nova_sala.save()
-        #     elif(obj.tipo == 1):
-        #         nova_sala = sala(nome = nome,
-        #                             piso = piso, lotacao = lotacao,
-        #                             laboratorio=False, auditorio=True, status=False)
-        #         nova_sala.save()
-        #     else:
-        #         nova_sala = sala(nome = nome,
-        #                             piso = piso, lotacao = lotacao,
-        #                             laboratorio=False, auditorio=False, status=False)
-        #         nova_sala.save()
-
-        # elif(obj.status == 1):
-        #     if(obj.tipo == 0):
-        #         nova_sala = sala(nome = nome,
-        #                             piso = piso, lotacao = lotacao,
-        #                             laboratorio=True, auditorio=False, status=True)
-        #         nova_sala.save()
-        #     elif(obj.tipo == 1):
-        #         nova_sala = sala(nome = nome,
-        #                             piso = piso, lotacao = lotacao,
-        #                             laboratorio=False, auditorio=True, status=True)
-        #         nova_sala.save()
-        #     else:
-        #         nova_sala = sala(nome = nome,
-        #                             piso = piso, lotacao = lotacao,
-        #                             laboratorio=False, auditorio=False, status=True)
-        #         nova_sala.save()
-        
-        obj.save()
-        form = createRoomModelForm()
-    return render(request,'adicionar_espaco.html',{'form':form})
-
-def inserir_espaco(request):
-
-    if(request.method=="POST"):
-        form = createRoomModelForm(request.POST)
         if form.is_valid():
-            nome=form.cleaned_data['nome_sala']
-            piso = form.cleaned_data['piso_sala']
-            lotacao = form.cleaned_data['lotacao_sala']
-            tipo = form.cleaned_data['tipo_sala']
-            status_da_sala = form.cleaned_data['status_sala']
-            if(status_da_sala == 0):
-                if(tipo == 0):
-                    nova_sala = sala(nome = nome,
-                                     piso = piso, lotacao = lotacao,
-                                     laboratorio=True, auditorio=False, status=False)
-                    nova_sala.save()
-                elif(tipo == 1):
-                    nova_sala = sala(nome = nome,
-                                     piso = piso, lotacao = lotacao,
-                                     laboratorio=False, auditorio=True, status=False)
-                    nova_sala.save()
-                else:
-                    nova_sala = sala(nome = nome,
-                                     piso = piso, lotacao = lotacao,
-                                     laboratorio=False, auditorio=False, status=False)
-                    nova_sala.save()
-            elif(status_da_sala == 1):
-                if(tipo == 0):
-                    nova_sala = sala(nome = nome,
-                                     piso = piso, lotacao = lotacao,
-                                     laboratorio=True, auditorio=False, status=True)
-                    nova_sala.save()
-                elif(tipo == 1):
-                    nova_sala = sala(nome = nome,
-                                     piso = piso, lotacao = lotacao,
-                                     laboratorio=False, auditorio=True, status=True)
-                    nova_sala.save()
-                else:
-                    nova_sala = sala(nome = nome,
-                                     piso = piso, lotacao = lotacao,
-                                     laboratorio=False, auditorio=False, status=True)
-                    nova_sala.save()
-    return render(request,'base.html')
-        
-
+            obj = form.save(commit=False)
+            
+            obj.save()
+            form = createRoomModelForm()
+            return redirect('espaco')
+    return render(request, 'adicionar_espaco.html', { 'form': form })

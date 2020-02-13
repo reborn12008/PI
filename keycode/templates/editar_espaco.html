@@ -2,16 +2,13 @@
 
 {% block info %}
 
-<h5> Formulario de Edição</h5>
+<h5> Editar {{nome_sala}}</h5>
 <section id="edit_space">
     <form id="edit_form" method="POST">
-        <a>Nome da Sala: {{nome_sala}}</a>
-        {{formulary}}
+        {{ formulary.as_p }}
         {% csrf_token %}
         <button type=submit> Concluir</button>
     </form>
 </section>
-
-
 
 {% endblock %}

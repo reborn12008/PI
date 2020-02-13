@@ -15,6 +15,17 @@ class createRoomForm(forms.Form):
     tipo = forms.CharField(widget=forms.SelectMultiple(choices=TIPO_SALA),required=True, label = "Tipo")
     status = forms.ChoiceField(choices=((0,'Indisponivel'),(1,'Disponivel')),required=True, label = "Disponibilidade",initial=1)
 
+    def clean(self):
+        cleaned_data = super().clean()
+        lotacao = cleaned_data.get('lotacao')
+        piso = cleaned_data.get('piso')
+        if lotacao < 1 or lotacao > 55:
+            raise forms.ValidationError("Erro: Lotação tem de ser positiva e até 55.")
+        
+        if piso < -1 or piso > 1:
+            raise forms.ValidationError("Erro: Piso tem de ser entre -1 e 1.")
+        return cleaned_data
+
 class createRoomModelForm(forms.ModelForm):
     class Meta:
         model = sala
