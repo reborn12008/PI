@@ -13,17 +13,9 @@ from .forms import createRoomModelForm
 TIPOS_SALA=[(0,'Laboratório'),(1,'Auditório'),(2,'Normal')]
 
 def espaco(request):
-    salas=[]
-
-
-    for entry in sala.objects.all():
-        print(entry)
-        if entry.status == True:
-            array=[entry.nome,entry.piso,entry.lotacao,entry.tipo,'Disponivel']
-        else:
-            array=[entry.nome,entry.piso,entry.lotacao,entry.tipo,'Indisponivel']
-        salas.append(array)
-    return render(request,'espaco.html',{'salas':salas})
+    template = 'espaco.html'
+    context = {'salas': sala.objects.all()}
+    return render(request, template, context)
 
 def editar_espaco(request, nome):
     obj = get_object_or_404(sala, nome=nome)

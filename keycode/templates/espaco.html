@@ -12,13 +12,22 @@
         <th>Estado</th>
         <th> </th>
     </tr>
-    {% for entry in salas %}
+    {% for sala in salas %}
     <tr>
-        {%for regist in entry%}
-        <td id="espaco_cell">{{ regist }}</td>
-        {% endfor %}
+        <td id="espaco_cell">{{ sala.nome }}</td>
+        <td id="espaco_cell">{{ sala.piso }}</td>
+        <td id="espaco_cell">{{ sala.lotacao }}</td>
+        <td id="espaco_cell">{{ sala.tipo }}</td>
         <td id="espaco_cell">
-            <a id="espaco_edit" name="espaco_edit" class="btn btn-primary" href="/editar/{{entry.0}}">Editar</a></td>
+            {% if sala.status == 1 %}
+                Disponivel
+            {% else %}
+                Não disponivel
+            {% endif %}
+        </td>
+
+        <td id="espaco_cell">
+            <a id="espaco_edit" name="espaco_edit" class="btn btn-primary" href="/editar/{{sala.nome}}">Editar</a></td>
     </tr>
     {% endfor %}
 
