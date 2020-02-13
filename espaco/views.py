@@ -22,10 +22,15 @@ def editar_espaco(request, nome):
     r = obj.nome
     form = createRoomModelForm(request.POST or None, instance=obj)
     if form.is_valid():
-        form.save()
-        return redirect('espaco')
+        if 'edit' in request.POST:
+            form.save()
+            return redirect('espaco')
+        elif 'remove' in request.POST:
+            sala.objects.filter(nome=nome).delete()
+            return redirect('espaco')
+        
 
-    return render(request, 'editar_espaco.html', {'formulary':form,'nome_sala':r} )
+    return render(request, 'editar_espaco.html', {'formulary':form, 'nome_sala':r} )
 
 def adicionar_espaco(request):
     form = createRoomModelForm(request.POST or None)

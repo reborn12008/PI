@@ -7,7 +7,8 @@
     <form id="edit_form" method="POST">
         {{ formulary.as_p }}
         {% csrf_token %}
-        <button type=submit> Concluir</button>
+        <button id="edit_sala" type="submit" name="edit" >Concluir</button>
+        <button id="remove_sala" type="submit" name="remove" onclick="return confirm('Tem a certeza que deseja remover esta sala?')">Remover Sala</button>
     </form>
 </section>
 
