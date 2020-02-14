@@ -18,48 +18,154 @@
     <tbody>
         <tr>
             <th scope="row">09:30</th>
+            {% for item in aulas_nove  %}
+                {% if item == None %}
+                    <th>    </th>
+                {% else %}
+                    <th>{{ item }}</th>
+                {% endif %}
+            {% endfor %}
+                    
         </tr>
         <tr>
-            <th>10:30</th>
+            <th scope="row">10:30</th>
+            {% for item in aulas_dez  %}
+                {% if item == None %}
+                    <th>    </th>
+                {% else %}
+                    <th>{{ item }}</th>
+                {% endif %}
+            {% endfor %}
         </tr>
         <tr>
             <th>11:30</th>
+            {% for item in aulas_onze  %}
+                {% if item == None %}
+                    <th>    </th>
+                {% else %}
+                    <th>{{ item }}</th>
+                {% endif %}
+            {% endfor %}
         </tr>
         <tr>
             <th>12:30</th>
+            {% for item in aulas_doze  %}
+                {% if item == None %}
+                    <th>    </th>
+                {% else %}
+                    <th>{{ item }}</th>
+                {% endif %}
+            {% endfor %}
         </tr>
         <tr>
             <th>13:30</th>
+            {% for item in aulas_treze  %}
+                {% if item == None %}
+                    <th>    </th>
+                {% else %}
+                    <th>{{ item }}</th>
+                {% endif %}
+            {% endfor %}
         </tr>
         <tr>
             <th>14:30</th>
+            {% for item in aulas_quatorze  %}
+                {% if item == None %}
+                    <th>    </th>
+                {% else %}
+                    <th>{{ item }}</th>
+                {% endif %}
+            {% endfor %}
         </tr>
         <tr>
             <th>15:30</th>
+            {% for item in aulas_quinze  %}
+                {% if item ==  None %}
+                    <th>    </th>
+                {% else %}
+                    <th>{{ item }}</th>
+                {% endif %}
+            {% endfor %}
         </tr>
         <tr>
             <th>16:30</th>
+            {% for item in aulas_dezasseis  %}
+                {% if item == None %}
+                    <th>    </th>
+                {% else %}
+                    <th>{{ item }}</th>
+                {% endif %}
+            {% endfor %}
         </tr>
         <tr>
             <th>17:30</th>
+            {% for item in aulas_dezassete  %}
+                {% if item == None %}
+                    <th>    </th>
+                {% else %}
+                    <th>{{ item }}</th>
+                {% endif %}
+            {% endfor %}
         </tr>
         <tr>
             <th>18:30</th>
+            {% for item in aulas_dezoito  %}
+                {% if item == None %}
+                    <th>    </th>
+                {% else %}
+                    <th>{{ item }}</th>
+                {% endif %}
+            {% endfor %}
         </tr>
         <tr>
             <th>19:30</th>
+            {% for item in aulas_dezanove  %}
+                {% if item == None %}
+                    <th>    </th>
+                {% else %}
+                    <th>{{ item }}</th>
+                {% endif %}
+            {% endfor %}
         </tr>
         <tr>
             <th>20:30</th>
+            {% for item in aulas_vinte  %}
+                {% if item == None %}
+                    <th>    </th>
+                {% else %}
+                    <th>{{ item }}</th>
+                {% endif %}
+            {% endfor %}
         </tr>
         <tr>
             <th>21:30</th>
+            {% for item in aulas_vum  %}
+                {% if item == None %}
+                    <th>    </th>
+                {% else %}
+                    <th>{{ item }}</th>
+                {% endif %}
+            {% endfor %}
         </tr>
         <tr>
             <th>22:30</th>
+            {% for item in aulas_vdois  %}
+            {% if item == None %}
+                <th>    </th>
+            {% else %}
+                <th>{{ item }}</th>
+            {% endif %}
+        {% endfor %}
         </tr>
         <tr>
             <th>23:30</th>
+            {% for item in aulas_vtres  %}
+                {% if item == None %}
+                    <th>    </th>
+                {% else %}
+                    <th>{{ item }}</th>
+                {% endif %}
+            {% endfor %}
         </tr>
     </tbody>
 </table>
