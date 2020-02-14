@@ -24,6 +24,65 @@ def horario(request):
     aulas_vdois = [None]*6
     aulas_vtres = [None]*6
 
+
+    acessos_list = []
+    for acesso in acessos.iterator():
+        acessos_list.append(
+            {
+                'hora_inicio': acesso.horario.hora_inicio,
+                'hora_fim': acesso.horario.hora_fim,
+                'dia_semana': acesso.horario.dia_semana,
+                'nome_uc': acesso.horario.uc.nome_uc
+            }
+        )
+
+    #exemplo de como podem aceder aos dados:
+    for acesso in acessos_list:
+        print(acesso['nome_uc'])
+    
+    """
+        TODO: percorrer a lista acessos_list, ver quais os objetos cuja hora_fim-hora_inicio>1, criar nova lista com isso tudo desmebrado.
+        depois em baixo fazem o mesmo algorimo. exemplo:
+
+
+        lista_expandida = []
+        for acesso in acessos_list:
+            if acesso['hora_fim'] - acesso['hora_inicio'] > 1: # (têm de arranjar maneira de fazer esta subtração, pesquisem como subtrair horas no google)
+                acesso_expandido = converter_batch_de_horas() #(acesso_expandido vai ser uma lista)
+                for blabla in acesso_expandido:
+                    lista_expandida.append(blabla)
+            else:
+                lista_expandida.append(acesso)
+
+
+        o que a converter_batch_de_horas tem de fazer:
+            {
+                'hora_inicio': '9:30',
+                'hora_fim': '11:30',
+                'dia_semana': 'segunda',
+                'nome_uc': 'DiogoNabo'
+            }
+
+            vai ter de ser convertido em 
+
+            [
+                {
+                    'hora_inicio': '9:30',
+                    'hora_fim': '10:30',
+                    'dia_semana': 'segunda',
+                    'nome_uc': 'DiogoNabo'
+                },
+                {
+                    'hora_inicio': '10:30',
+                    'hora_fim': '11:30',
+                    'dia_semana': 'segunda',
+                    'nome_uc': 'DiogoNabo'
+                }
+            ]
+
+        
+    """
+
     
     for acesso in acessos.iterator():
         #print(acesso.utilizador.username)
