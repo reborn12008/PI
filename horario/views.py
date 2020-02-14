@@ -29,6 +29,7 @@ def horario(request):
     for acesso in acessos.iterator():
         acessos_list.append(
             {
+                'acesso_id' : acesso.id,
                 'hora_inicio': acesso.horario.hora_inicio,
                 'hora_fim': acesso.horario.hora_fim,
                 'dia_semana': acesso.horario.dia_semana,
@@ -37,20 +38,11 @@ def horario(request):
             }
         )
 
-    #exemplo de como podem aceder aos dados:
-    for acesso in acessos_list:
-        print(acesso['nome_uc'])
-    
-    """
-        TODO: percorrer a lista acessos_list, ver quais os objetos cuja hora_fim-hora_inicio>1, criar nova lista com isso tudo desmebrado.
-        depois em baixo fazem o mesmo algorimo. exemplo:
-    """
-
     lista_expandida = []
     for acesso in acessos_list:
         dif_horas=int(acesso['hora_fim'][:2]) - int(acesso['hora_inicio'][:2])
         if dif_horas > 1: # (têm de arranjar maneira de fazer esta subtração, pesquisem como subtrair horas no google)
-            acesso_expandido = converter_batch_de_horas(dif_horas,acesso['hora_inicio'],acesso['hora_fim'],acesso['dia_semana'],acesso['nome_uc'],acesso['sala']) #(acesso_expandido vai ser uma lista)
+            acesso_expandido = converter_batch_de_horas(dif_horas,acesso['acesso_id'],acesso['hora_inicio'],acesso['hora_fim'],acesso['dia_semana'],acesso['nome_uc'],acesso['sala']) #(acesso_expandido vai ser uma lista)
             for item in acesso_expandido:
                 lista_expandida.append(item)
         else:
@@ -67,35 +59,35 @@ def horario(request):
         # COnverter os 2 primeiros digitos da string da hora inicial e final,subtrair para saber quantas vezes aparecerá aquela disciplina
         
         if( it['hora_inicio'] == '9:30'):
-            aulas_nove[it['dia_semana']] = { 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
+            aulas_nove[it['dia_semana']] = { 'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'acesso_id' : it['acesso_id'] }
         elif( it['hora_inicio'] == '10:30'): 
-            aulas_dez[it['dia_semana']] = { 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
+            aulas_dez[it['dia_semana']] = { 'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'acesso_id' : it['acesso_id'] }
         elif( it['hora_inicio'] == '11:30' ): 
-            aulas_onze[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
+            aulas_onze[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'acesso_id' : it['acesso_id'] }
         elif( it['hora_inicio'] == '12:30'): 
-            aulas_doze[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
+            aulas_doze[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'acesso_id' : it['acesso_id'] }
         elif( it['hora_inicio'] == '13:30'): 
-            aulas_treze[it['dia_semana']] = {'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
+            aulas_treze[it['dia_semana']] = {'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'acesso_id' : it['acesso_id'] }
         elif( it['hora_inicio'] == '14:30'):
-            aulas_quatorze[it['dia_semana']] = { 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
+            aulas_quatorze[it['dia_semana']] = { 'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'acesso_id' : it['acesso_id'] }
         elif( it['hora_inicio'] == '15:30'):
-            aulas_quinze[it['dia_semana']] = { 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
+            aulas_quinze[it['dia_semana']] = { 'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'acesso_id' : it['acesso_id'] }
         elif( it['hora_inicio'] == '16:30'):
-            aulas_dezasseis[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
+            aulas_dezasseis[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'acesso_id' : it['acesso_id'] }
         elif( it['hora_inicio'] == '17:30'):
-            aulas_dezassete[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
+            aulas_dezassete[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'acesso_id' : it['acesso_id'] }
         elif( it['hora_inicio'] == '18:30'):
-            aulas_dezoito[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
+            aulas_dezoito[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'acesso_id' : it['acesso_id'] }
         elif( it['hora_inicio'] == '19:30'):
-            aulas_dezanove[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
+            aulas_dezanove[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'acesso_id' : it['acesso_id'] }
         elif( it['hora_inicio'] == '20:30'):
-            aulas_vinte[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
+            aulas_vinte[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'acesso_id' : it['acesso_id'] }
         elif( it['hora_inicio'] == '21:30'):
-            aulas_vum[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
+            aulas_vum[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'acesso_id' : it['acesso_id'] }
         elif( it['hora_inicio'] == '22:30'):
-            aulas_vdois[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
+            aulas_vdois[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'acesso_id' : it['acesso_id'] }
         elif( it['hora_inicio'] == '23:30'):
-            aulas_vtres[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
+            aulas_vtres[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'acesso_id' : it['acesso_id'] }
 
     return render(request,'horario.html', {'aulas_nove' : aulas_nove, 'aulas_dez' : aulas_dez,
                                            'aulas_onze' : aulas_onze, 'aulas_doze' : aulas_doze,
@@ -107,13 +99,14 @@ def horario(request):
                                            'aulas_vdois' : aulas_vdois, 'aulas_vtres' : aulas_vtres})
 
 
-def converter_batch_de_horas(dif_horas,hora_inicio,hora_fim,dia_semana,nome_uc,sala):
+def converter_batch_de_horas(dif_horas,acesso_id,hora_inicio,hora_fim,dia_semana,nome_uc,sala):
     bloco_horario = []
     hora_i=int(hora_inicio[:2])
     hora_f=hora_i + 1
     for i in range(dif_horas):
         bloco_horario.append(
             {
+                'acesso_id' : acesso_id,
                 'hora_inicio' : str(hora_i) + ':30',
                 'hora_fim' : str(hora_f) + ':30',
                 'dia_semana' : dia_semana - 1 ,
