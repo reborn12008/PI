@@ -68,7 +68,7 @@ def horario(request):
 
     return render(request,'horario.html', {'aulas_nove' : aulas_nove, 'aulas_dez' : aulas_dez,
                                            'aulas_onze' : aulas_onze, 'aulas_doze' : aulas_doze,
-                                           'aulas_treze' : aulas_treze, 'aulas_quatroze' : aulas_quatorze,
+                                           'aulas_treze' : aulas_treze, 'aulas_quatorze' : aulas_quatorze,
                                            'aulas_quinze' : aulas_quinze, 'aulas_dezaseis' : aulas_dezasseis,
                                            'aulas_dezasete' : aulas_dezassete, 'aulas_dezoito' : aulas_dezoito,
                                            'aulas_dezanove' : aulas_dezanove, 'aulas_vinte' : aulas_vinte,
