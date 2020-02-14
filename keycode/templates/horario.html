@@ -17,12 +17,16 @@
     </thead>
     <tbody>
         <tr>
-            <th scope="row">09:30</th>
+            <th scope="row">9:30</th>
             {% for item in aulas_nove  %}
                 {% if item == None %}
                     <th>    </th>
                 {% else %}
-                    <th>{{ item }}</th>
+                <th>
+                    {% for i,value in item.items %}
+                         {{ value }} <br>
+                    {% endfor %}
+                </th>
                 {% endif %}
             {% endfor %}
                     
@@ -33,7 +37,12 @@
                 {% if item == None %}
                     <th>    </th>
                 {% else %}
-                    <th>{{ item }}</th>
+                <th>
+                    {% for i,value in item.items %}
+                         {{ value }} <br>
+                    {% endfor %}
+                </th>
+                
                 {% endif %}
             {% endfor %}
         </tr>
@@ -43,7 +52,11 @@
                 {% if item == None %}
                     <th>    </th>
                 {% else %}
-                    <th>{{ item }}</th>
+                <th>
+                    {% for i,value in item.items %}
+                         {{ value }} <br>
+                    {% endfor %}
+                </th>
                 {% endif %}
             {% endfor %}
         </tr>
@@ -53,7 +66,11 @@
                 {% if item == None %}
                     <th>    </th>
                 {% else %}
-                    <th>{{ item }}</th>
+                <th>
+                    {% for i,value in item.items %}
+                         {{ value }} <br>
+                    {% endfor %}
+                </th>
                 {% endif %}
             {% endfor %}
         </tr>
@@ -63,7 +80,11 @@
                 {% if item == None %}
                     <th>    </th>
                 {% else %}
-                    <th>{{ item }}</th>
+                <th>
+                    {% for i,value in item.items %}
+                         {{ value }} <br>
+                    {% endfor %}
+                </th>
                 {% endif %}
             {% endfor %}
         </tr>
@@ -73,7 +94,11 @@
                 {% if item == None %}
                     <th>    </th>
                 {% else %}
-                    <th>{{ item }}</th>
+                <th>
+                    {% for i,value in item.items %}
+                         {{ value }} <br>
+                    {% endfor %}
+                </th>
                 {% endif %}
             {% endfor %}
         </tr>
@@ -83,7 +108,11 @@
                 {% if item ==  None %}
                     <th>    </th>
                 {% else %}
-                    <th>{{ item }}</th>
+                <th>
+                    {% for i,value in item.items %}
+                         {{ value }} <br>
+                    {% endfor %}
+                </th>
                 {% endif %}
             {% endfor %}
         </tr>
@@ -93,7 +122,11 @@
                 {% if item == None %}
                     <th>    </th>
                 {% else %}
-                    <th>{{ item }}</th>
+                <th>
+                    {% for i,value in item.items %}
+                         {{ value }} <br>
+                    {% endfor %}
+                </th>
                 {% endif %}
             {% endfor %}
         </tr>
@@ -103,7 +136,11 @@
                 {% if item == None %}
                     <th>    </th>
                 {% else %}
-                    <th>{{ item }}</th>
+                <th>
+                    {% for i,value in item.items %}
+                         {{ value }} <br>
+                    {% endfor %}
+                </th>
                 {% endif %}
             {% endfor %}
         </tr>
@@ -113,7 +150,11 @@
                 {% if item == None %}
                     <th>    </th>
                 {% else %}
-                    <th>{{ item }}</th>
+                <th>
+                    {% for i,value in item.items %}
+                         {{ value }} <br>
+                    {% endfor %}
+                </th>
                 {% endif %}
             {% endfor %}
         </tr>
@@ -123,7 +164,11 @@
                 {% if item == None %}
                     <th>    </th>
                 {% else %}
-                    <th>{{ item }}</th>
+                <th>
+                    {% for i,value in item.items %}
+                         {{ value }} <br>
+                    {% endfor %}
+                </th>
                 {% endif %}
             {% endfor %}
         </tr>
@@ -133,7 +178,11 @@
                 {% if item == None %}
                     <th>    </th>
                 {% else %}
-                    <th>{{ item }}</th>
+                <th>
+                    {% for i,value in item.items %}
+                         {{ value }} <br>
+                    {% endfor %}
+                </th>
                 {% endif %}
             {% endfor %}
         </tr>
@@ -143,7 +192,11 @@
                 {% if item == None %}
                     <th>    </th>
                 {% else %}
-                    <th>{{ item }}</th>
+                <th>
+                    {% for i,value in item.items %}
+                         {{ value }} <br>
+                    {% endfor %}
+                </th>
                 {% endif %}
             {% endfor %}
         </tr>
@@ -153,7 +206,11 @@
             {% if item == None %}
                 <th>    </th>
             {% else %}
-                <th>{{ item }}</th>
+            <th>
+                {% for i,value in item.items %}
+                     {{ value }} <br>
+                {% endfor %}
+            </th>
             {% endif %}
         {% endfor %}
         </tr>
@@ -163,7 +220,11 @@
                 {% if item == None %}
                     <th>    </th>
                 {% else %}
-                    <th>{{ item }}</th>
+                <th>
+                    {% for i,value in item.items %}
+                         {{ value }} <br>
+                    {% endfor %}
+                </th>
                 {% endif %}
             {% endfor %}
         </tr>

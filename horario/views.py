@@ -66,36 +66,36 @@ def horario(request):
         #print(acesso.horario.hora_fim)
         # COnverter os 2 primeiros digitos da string da hora inicial e final,subtrair para saber quantas vezes aparecerá aquela disciplina
         
-        if( it['hora_inicio'] == '09:30'):
-            aulas_nove[it['dia_semana']] = it['nome_uc']
+        if( it['hora_inicio'] == '9:30'):
+            aulas_nove[it['dia_semana']] = { 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
         elif( it['hora_inicio'] == '10:30'): 
-            aulas_dez[it['dia_semana']] = it['nome_uc']
+            aulas_dez[it['dia_semana']] = { 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
         elif( it['hora_inicio'] == '11:30' ): 
-            aulas_onze[it['dia_semana']] = it['nome_uc']
+            aulas_onze[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
         elif( it['hora_inicio'] == '12:30'): 
-            aulas_doze[it['dia_semana']] = it['nome_uc']
+            aulas_doze[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
         elif( it['hora_inicio'] == '13:30'): 
-            aulas_treze[it['dia_semana']] = it['nome_uc']
+            aulas_treze[it['dia_semana']] = {'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
         elif( it['hora_inicio'] == '14:30'):
-            aulas_quatorze[it['dia_semana']] = it['nome_uc']
+            aulas_quatorze[it['dia_semana']] = { 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
         elif( it['hora_inicio'] == '15:30'):
-            aulas_quinze[it['dia_semana']] = it['nome_uc']
+            aulas_quinze[it['dia_semana']] = { 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
         elif( it['hora_inicio'] == '16:30'):
-            aulas_dezasseis[it['dia_semana']] = it['nome_uc']
+            aulas_dezasseis[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
         elif( it['hora_inicio'] == '17:30'):
-            aulas_dezassete[it['dia_semana']] = it['nome_uc']
+            aulas_dezassete[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
         elif( it['hora_inicio'] == '18:30'):
-            aulas_dezoito[it['dia_semana']] = it['nome_uc']
+            aulas_dezoito[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
         elif( it['hora_inicio'] == '19:30'):
-            aulas_dezanove[it['dia_semana']] = it['nome_uc']
+            aulas_dezanove[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
         elif( it['hora_inicio'] == '20:30'):
-            aulas_vinte[it['dia_semana']] = it['nome_uc']
+            aulas_vinte[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
         elif( it['hora_inicio'] == '21:30'):
-            aulas_vum[it['dia_semana']] = it['nome_uc']
+            aulas_vum[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
         elif( it['hora_inicio'] == '22:30'):
-            aulas_vdois[it['dia_semana']] = it['nome_uc']
+            aulas_vdois[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
         elif( it['hora_inicio'] == '23:30'):
-            aulas_vtres[it['dia_semana']] = it['nome_uc']
+            aulas_vtres[it['dia_semana']] ={ 'nome_uc' : it['nome_uc'], 'sala' : it['sala'] }
 
     return render(request,'horario.html', {'aulas_nove' : aulas_nove, 'aulas_dez' : aulas_dez,
                                            'aulas_onze' : aulas_onze, 'aulas_doze' : aulas_doze,
@@ -109,16 +109,18 @@ def horario(request):
 
 def converter_batch_de_horas(dif_horas,hora_inicio,hora_fim,dia_semana,nome_uc,sala):
     bloco_horario = []
+    hora_i=int(hora_inicio[:2])
+    hora_f=hora_i + 1
     for i in range(dif_horas):
-        hora_i = int(hora_inicio[:2]) +  i
-        hora_f = hora_i + 1
         bloco_horario.append(
             {
                 'hora_inicio' : str(hora_i) + ':30',
                 'hora_fim' : str(hora_f) + ':30',
-                'dia_semana' : dia_semana,
+                'dia_semana' : dia_semana - 1 ,
                 'nome_uc' : nome_uc,
                 'sala' : sala
             }
         )
+        hora_i += 1
+        hora_f = hora_i + 1     
     return bloco_horario
