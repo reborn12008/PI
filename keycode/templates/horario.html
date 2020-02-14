@@ -2,6 +2,12 @@
 
 {% block info %}
 
+<script>
+    function my_func(id) {
+        document.getElementById("the_pincode").innerHTML = id ;
+    }
+</script>
+
 <h1>O seu Horário</h1>
 <table class="table table-light table-striped">
     <thead class="thead-dark">
@@ -23,29 +29,11 @@
                     <th>    </th>
                 {% else %}
                 <th>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="my_func( {{ item.acesso_id }} )">
                         {{ item.nome_uc }} <br> {{item.sala}}
                     </button>
                 </th>
                 {% endif %}
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">PINCODE</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                            {{ item.acesso_id }}
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
             {% endfor %}
                     
         </tr>
@@ -56,7 +44,7 @@
                     <th>    </th>
                 {% else %}
                 <th>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="my_func( {{ item.acesso_id }} )">
                         {{ item.nome_uc }} <br> {{item.sala}}
                     </button>
                 </th>
@@ -71,10 +59,8 @@
                     <th>    </th>
                 {% else %}
                 <th>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        {% for i,value in item.items %}
-                            {{ value }} <br>
-                        {% endfor %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="my_func( {{ item.acesso_id }} )">
+                        {{ item.nome_uc }} <br> {{item.sala}}
                     </button>
                 </th>
                 {% endif %}
@@ -87,10 +73,8 @@
                     <th>    </th>
                 {% else %}
                 <th>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        {% for i,value in item.items %}
-                            {{ value }} <br>
-                        {% endfor %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="my_func( {{ item.acesso_id }} )">
+                        {{ item.nome_uc }} <br> {{item.sala}}
                     </button>
                 </th>
                 {% endif %}
@@ -103,10 +87,8 @@
                     <th>    </th>
                 {% else %}
                 <th>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        {% for i,value in item.items %}
-                            {{ value }} <br>
-                        {% endfor %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="my_func( {{ item.acesso_id }} )">
+                        {{ item.nome_uc }} <br> {{item.sala}}
                     </button>
                 </th>
                 {% endif %}
@@ -119,10 +101,8 @@
                     <th>    </th>
                 {% else %}
                 <th>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        {% for i,value in item.items %}
-                            {{ value }} <br>
-                        {% endfor %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="my_func( {{ item.acesso_id }} )">
+                        {{ item.nome_uc }} <br> {{item.sala}}
                     </button>
                 </th>
                 {% endif %}
@@ -135,10 +115,8 @@
                     <th>    </th>
                 {% else %}
                 <th>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        {% for i,value in item.items %}
-                            {{ value }} <br>
-                        {% endfor %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="my_func( {{ item.acesso_id }} )">
+                        {{ item.nome_uc }} <br> {{item.sala}}
                     </button>
                 </th>
                 {% endif %}
@@ -151,10 +129,8 @@
                     <th>    </th>
                 {% else %}
                 <th>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        {% for i,value in item.items %}
-                            {{ value }} <br>
-                        {% endfor %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="my_func( {{ item.acesso_id }} )">
+                        {{ item.nome_uc }} <br> {{item.sala}}
                     </button>
                 </th>
                 {% endif %}
@@ -167,10 +143,8 @@
                     <th>    </th>
                 {% else %}
                 <th>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        {% for i,value in item.items %}
-                            {{ value }} <br>
-                        {% endfor %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="my_func( {{ item.acesso_id }} )">
+                        {{ item.nome_uc }} <br> {{item.sala}}
                     </button>
                 </th>
                 {% endif %}
@@ -183,10 +157,8 @@
                     <th>    </th>
                 {% else %}
                 <th>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        {% for i,value in item.items %}
-                            {{ value }} <br>
-                        {% endfor %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="my_func( {{ item.acesso_id }} )">
+                        {{ item.nome_uc }} <br> {{item.sala}}
                     </button>
                 </th>
                 {% endif %}
@@ -199,10 +171,8 @@
                     <th>    </th>
                 {% else %}
                 <th>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        {% for i,value in item.items %}
-                            {{ value }} <br>
-                        {% endfor %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="my_func( {{ item.acesso_id }} )">
+                        {{ item.nome_uc }} <br> {{item.sala}}
                     </button>
                 </th>
                 {% endif %}
@@ -215,10 +185,8 @@
                     <th>    </th>
                 {% else %}
                 <th>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        {% for i,value in item.items %}
-                            {{ value }} <br>
-                        {% endfor %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="my_func( {{ item.acesso_id }} )">
+                        {{ item.nome_uc }} <br> {{item.sala}}
                     </button>
                 </th>
                 {% endif %}
@@ -231,10 +199,8 @@
                     <th>    </th>
                 {% else %}
                 <th>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        {% for i,value in item.items %}
-                            {{ value }} <br>
-                        {% endfor %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="my_func( {{ item.acesso_id }} )">
+                        {{ item.nome_uc }} <br> {{item.sala}}
                     </button>
                 </th>
                 {% endif %}
@@ -247,10 +213,8 @@
                 <th>    </th>
             {% else %}
             <th>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    {% for i,value in item.items %}
-                        {{ value }} <br>
-                    {% endfor %}
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="my_func( {{ item.acesso_id }} )">
+                    {{ item.nome_uc }} <br> {{item.sala}}
                 </button>
             </th>
             {% endif %}
@@ -263,10 +227,8 @@
                     <th>    </th>
                 {% else %}
                 <th>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        {% for i,value in item.items %}
-                            {{ value }} <br>
-                        {% endfor %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="my_func( {{ item.acesso_id }} )">
+                        {{ item.nome_uc }} <br> {{item.sala}}
                     </button>
                 </th>
                 {% endif %}
@@ -275,4 +237,22 @@
     </tbody>
 </table>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">PINCODE</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <a id="the_pincode">  </a>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
