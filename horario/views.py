@@ -35,7 +35,7 @@ def horario(request):
         #print(acesso.horario.hora_fim)
         # COnverter os 2 primeiros digitos da string da hora inicial e final,subtrair para saber quantas vezes aparecerá aquela disciplina
         
-        if( acesso.horario.hora_inicio == '9:30'):
+        if( acesso.horario.hora_inicio == '09:30'):
             aulas_nove[acesso.horario.dia_semana-1] = acesso.horario.uc.nome_uc
         elif( acesso.horario.hora_inicio == '10:30'): # or int(acesso.horario.hora_fim[:2])<11):
             aulas_dez[acesso.horario.dia_semana-1] = acesso.horario.uc.nome_uc
