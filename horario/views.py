@@ -1,9 +1,28 @@
 from django.shortcuts import render
 from keycode.source.models import Utilizador, Acesso
 
-# Create your views here.
+import base64
+from Crypto.Cipher import AES
+from Crypto import Random
+
+bs = AES.block_size
+
+def decrypt(enc, key):
+    enc = base64.b64decode(enc)
+    iv = enc[:AES.block_size]
+    cipher = AES.new(key, AES.MODE_CBC, iv)
+    return _unpad(cipher.decrypt(enc[AES.block_size:])).decode('utf-8')
+
+def _unpad(s):
+    return s[:-ord(s[len(s)-1:])]
+
+def get_encryptdecrypt_password(filename):
+    f = open(filename, "r")
+    return f.read()
 
 def horario(request):
+    password = get_encryptdecrypt_password('chave_encriptacao')
+    print(password)
     username = request.user
     current_user = Utilizador.objects.get(username=username)
     acessos = Acesso.objects.filter(utilizador=current_user.id)
@@ -41,6 +60,10 @@ def horario(request):
     lista_expandida = []
     for acesso in acessos_list:
         dif_horas=int(acesso['hora_fim'][:2]) - int(acesso['hora_inicio'][:2])
+        
+        pincode_decrypted = decrypt(acesso['pincode'], password)
+        acesso['pincode'] = pincode_decrypted
+
         if dif_horas > 1: # (têm de arranjar maneira de fazer esta subtração, pesquisem como subtrair horas no google)
             acesso_expandido = converter_batch_de_horas(dif_horas,acesso['pincode'],acesso['hora_inicio'],acesso['hora_fim'],acesso['dia_semana'],acesso['nome_uc'],acesso['sala']) #(acesso_expandido vai ser uma lista)
             for item in acesso_expandido:
@@ -49,15 +72,6 @@ def horario(request):
             lista_expandida.append(acesso)
 
     for it in lista_expandida:
-        #print(acesso.utilizador.username)
-        #print(acesso.utilizador.tipo_utilizador)
-        #print(acesso.horario.sala.nome)
-        #print(acesso.horario.uc.nome_uc)
-        #print(acesso.horario.dia_semana)
-        #print(acesso.horario.hora_inicio)
-        #print(acesso.horario.hora_fim)
-        # COnverter os 2 primeiros digitos da string da hora inicial e final,subtrair para saber quantas vezes aparecerá aquela disciplina
-        
         if( it['hora_inicio'] == '9:30'):
             aulas_nove[it['dia_semana']] = { 'nome_uc' : it['nome_uc'], 'sala' : it['sala'], 'pincode' : it['pincode'] }
         elif( it['hora_inicio'] == '10:30'): 

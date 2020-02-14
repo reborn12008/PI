@@ -88,7 +88,7 @@ class Horario(models.Model):
 class Acesso(models.Model):
     utilizador = models.ForeignKey(Utilizador,on_delete=models.CASCADE)
     horario = models.ForeignKey(Horario,on_delete=models.CASCADE)
-    pincode = models.CharField(max_length=20)
+    pincode = models.BinaryField()
     pincode_status = models.SmallIntegerField(choices=STATUS_PIN)
 
     def __str__(self):
